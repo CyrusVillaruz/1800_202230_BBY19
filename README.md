@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+*Hi my name is Benjamin. I'm excited to fail this course.
 	
 ## Technologies
 Technologies used for this project:
