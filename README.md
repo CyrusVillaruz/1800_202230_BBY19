@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+* My name is Cyrus. This project seems to be very fun
 	
 ## Technologies
 Technologies used for this project:
