@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+# Hello, I'm Trevor! I'm excited for COMP 1800 because creating a project will give me hands-on experience on what it's like to work in a team environment.
 *Hi my name is Benjamin. I'm excited to fail this course.
 	
 ## Technologies
