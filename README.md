@@ -5,7 +5,7 @@
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
+This browser based web application to help students study and do schoolwork more efficiently with the help of a pet raising system.
 * My name is Cyrus. This project seems to be very fun
 * Hello, I'm Trevor! I'm excited for COMP 1800 because creating a project will give me hands-on experience on what it's like to work in a team environment.
 * Hi my name is Benjamin. I'm excited to fail this course.
@@ -15,7 +15,7 @@ Technologies used for this project:
 * HTML, CSS
 * JavaScript
 * Bootstrap 
-* ...
+* Firebase
 	
 ## Content
 Content of the project folder:
