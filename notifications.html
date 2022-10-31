@@ -17,28 +17,61 @@
     <!-- Other libraries go here -->
 
     <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/settingsstyle.css">
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
   </head>
 
   <body>
-    <!-- Settings Skeleton -->
-    <div class="SettingsGrid">
-      <header class="SettingsNav">
-        <div id="SettingsContent">
-          <h2>Settings</h2>
-          <div id="Notifications">
-            <a href="notifications.html">Notifications</a>
+    <!-- Notifications Skeleton -->
+    <div class="NotificationsGrid">
+      <header class="NotificationsNav">
+        <div id="NotificationsContent">
+          <h2>Notifications</h2>
+          <div id="Enabled">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Enabled</label>
+            </div>
+          </div> 
+          <div id="AddCourses">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Add a course
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">From web</a></li>
+                <li><a class="dropdown-item" href="#">From application</a></li>
+                <li><a class="dropdown-item" href="#">Add manually</a></li>
+              </ul>
+            </div>
           </div>
-          <div id="Account">
-            <a href="#">Account</a>
+          <div id="Priorize">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Prioritize
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Courses</a></li>
+                <li><a class="dropdown-item" href="#">Study results</a></li>
+                <li><a class="dropdown-item" href="#">Upcoming exams</a></li>
+              </ul>
+            </div>
           </div>
-          <div id="AppInfo">
-            <a href="#">App Info</a>
+          <div id="Remove">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Remove
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Courses</a></li>
+                <li><a class="dropdown-item" href="#">Study results</a></li>
+                <li><a class="dropdown-item" href="#">Upcoming exams</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </header>
     </div>
+
     <!-- Navfooter -->
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
       <div class="container-fluid">
@@ -72,4 +105,5 @@
       </div>
     </nav>
   </body>
+
 </html>
