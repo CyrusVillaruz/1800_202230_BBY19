@@ -1,3 +1,9 @@
-.card img{
+.card img {
   width:200px;
+}
+
+.navicon {
+  display: block;
+  margin: 0 auto;
+  width: 100pt;
 }
