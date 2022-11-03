@@ -1,0 +1,41 @@
+.setupgrid {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    "header"
+    "study"
+    "break"
+    "notif"
+    "focus";
+}
+
+#setuptitle {
+    grid-area: header;
+    place-items: center;
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#stimer {
+    grid-area: study;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#btimer {
+    grid-area: break;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#ntimer {
+    grid-area: notif;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#textarea {
+    grid-area: focus;
+}
