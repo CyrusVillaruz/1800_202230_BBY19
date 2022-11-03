@@ -55,3 +55,9 @@ body {
   grid-area:removecourse;
   margin: 2em;
 }
+
+.navicon {
+  display: block;
+  margin: 0 auto;
+  width: 100pt;
+}
