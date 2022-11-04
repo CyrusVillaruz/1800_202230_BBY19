@@ -3,11 +3,11 @@
     height: 100vh;
     grid-template-rows: 1fr;
     grid-template-areas:
-    "header"
-    "study"
-    "break"
-    "notif"
-    "focus";
+        "header"
+        "study"
+        "break"
+        "notif"
+        "focus";
 }
 
 #setuptitle {
@@ -38,4 +38,6 @@
 
 #textarea {
     grid-area: focus;
+    margin: 1rem;
+    padding: 1rem;
 }
