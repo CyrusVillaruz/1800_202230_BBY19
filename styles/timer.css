@@ -28,7 +28,7 @@ html {
     position: absolute;
     overflow: hidden;
     z-index: 1;
-    display: none;
+    /* display: none; */
 }
 
 .semicircle {

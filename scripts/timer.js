@@ -99,19 +99,6 @@ function countdown(duration) {
 
         // Find the distance between now and the count down date
         var distance = countDownDate - now;
-
-        const angle = (countDownDate / distance) * 360;
-
-        // progress indicator
-        if (angle > 180) {
-            semicircles[2].style.display ='none';
-            semicircles[0].style.transform = 'rotate(180deg)';
-            semicircles[1].style.transform = `rotate(${angle}deg)`;
-        } else {
-            semicircles[2].style.display ='block';
-            semicircles[0].style.transform = `rotate(${angle}deg)`;
-            semicircles[1].style.transform = `rotate(${angle}deg)`;
-        }
         
         // Time calculations for hours, minutes and seconds
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
