@@ -40,6 +40,10 @@ html {
     transform-origin: right center;
 }
 
+#pausebtn {
+    display: none;
+}
+
 .semicircle:nth-child(1) {
     background-color: #088b8b;
     z-index: 2;

@@ -22,7 +22,7 @@ collection.users {
 
 start-task.html
 	USER
-  1a. user submits time they want and timer begins.
+    1a. user submits time they want and timer begins.
 	1b. stats.totalSessions++
 	2a. time is STOPPED or HITS ZERO.
 	2b. stats.totalTime += intiialTime - remainingDuration
