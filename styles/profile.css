@@ -1,0 +1,14 @@
+#profile-grid {
+    display: grid;
+    padding: 10px;
+    grid-template-rows: 4fr, 1fr, 1fr, 1fr;
+}
+
+#avatar {
+    grid-row: 1;
+}
+
+#profile-pic {
+    width: 1%;
+    size: 1%;
+}
