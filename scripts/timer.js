@@ -1,6 +1,7 @@
 const semicircles = document.querySelectorAll('.semicircle');
 const timer = document.querySelector('.timer');
 
+
 // Input
 // const hr = 0;
 // const min = 0;
@@ -72,7 +73,12 @@ const timer = document.querySelector('.timer');
 // }
 function startTimer() {
     var duration = document.getElementById("duration").value;
-    console.log(duration);
+    var startButton = document.getElementById("startbtn");
+    var pauseButton = document.getElementById("pausebtn");
+
+    startButton.style.display = "none";
+    pauseButton.style.display = "block";
+
     countdown(duration);
 }
 function countdown(duration) {
@@ -136,3 +142,4 @@ function countdown(duration) {
         }
     }, 1000);
 }
+
