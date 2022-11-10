@@ -4,8 +4,10 @@ collection.users {
 			doc.totalTime
 			doc.totalSessions
 			doc.averageDuration
-			doc.
 		}
+
+    collection.friends{
+    }
 			
 		collection.pet {
 			doc.name
