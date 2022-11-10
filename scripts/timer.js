@@ -1,5 +1,6 @@
 const semicircles = document.querySelectorAll('.semicircle');
 const timer = document.querySelector('.timer');
+const inputField = document.querySelector('.container');
 
 
 // Input
@@ -78,6 +79,7 @@ function startTimer() {
 
     startButton.style.display = "none";
     pauseButton.style.display = "block";
+    inputField.style.display = "none";
 
     countdown(duration);
 }
