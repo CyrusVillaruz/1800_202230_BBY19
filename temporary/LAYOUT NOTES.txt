@@ -1,0 +1,26 @@
+collection.users {
+	doc.user {
+		colllection.stats {
+			doc.totalTime
+			doc.totalSessions
+			doc.averageDuration
+			doc.
+		}
+			
+		collection.pet {
+			doc.name
+			doc.level
+			doc.totalExp
+			doc.height
+			?doc.happiness
+		}
+	}
+}
+	
+
+start-task.html
+	1a. user submits time they want and timer begins.
+	1b. totalSessions++
+	2a. time spent before stopping is kept track and added to totalTime
+	2b. totalTime += intiialTime - remainingDuration
+	3a. 
