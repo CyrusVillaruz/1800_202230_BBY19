@@ -82,6 +82,15 @@ function startTimer() {
     inputField.style.display = "none";
 
     countdown(duration);
+    updateTotalTime();
+}
+
+function updateTotalTime() {
+    var totalTimeRef = db.collection("users").doc(user.uid);
+
+    totalTimeRef.update({
+        totalTime: firebase.firestore.FieldValue.increment(1)
+    })
 }
 function countdown(duration) {
     // Set the date we're counting down to
