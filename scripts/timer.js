@@ -54,8 +54,8 @@ function startTimer() {
 
   if (seconds > 0) {
     percent = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
-    setProgress(percent); // Sets the circle progress to 100
-    seconds -= 10;
+    setProgress(percent);
+    seconds -= 10; // Saving time from testing.
     initial = window.setTimeout("startTimer()", 1000);
 
     // Changes the circle to red, and adds a pulsing animation to emphasize the session ending soon.
