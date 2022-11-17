@@ -13,9 +13,9 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" /> -->
     <!-- Boostrap Library JS CDN  go here -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script> -->
     <!-- Other libraries go here -->
 
     <!-- Link to styles of your own -->
@@ -23,28 +23,49 @@
   </head>
 
   <body>
-    <div class="main-container center">
-      <div class="container bg-secondary py-5">
-        <label for="appt">Enter a time duration:</label>
-        <input type="number" id="duration" placeholder="Enter minutes">
-        <br>
-        <input type="button" value="START" id="startbtn" onclick="startTimer()">
-        <input type="button" value="PAUSE" id="pausebtn" onclick="stopTimer()">
-        <br>
+    <h1>Start a Session</h1>
+    <div class="clock">
+      <div class="mins">00</div>
+      <div>:</div>
+      <div class="secs">00</div>
+      <svg class="progress-ring" height="120" width="120">
+        <circle
+          class="progress-ring__circle"
+          stroke-width="8"
+          fill="transparent"
+          r="50"
+          cx="60"
+          cy="60"
+        />
+      </svg>
+    </div>
+    <div class="btn-group">
+      <div class="start">
+        <img src="./img/navicon/play_circle_FILL1_wght400_GRAD0_opsz48.svg"/>
+        <p>Start</p>
       </div>
-      <!-- progress indicator -->
-      <!-- <div class="circle-container center">
-          <div class="semicircle"></div>
-          <div class="semicircle"></div>
-          <div class="semicircle"></div>
-          <div class="outermost-circle"></div>
-      </div> -->
-      <!-- timer  -->
-      <div class="timer-container center">
-          <div class="timer center"></div>
+      <div class="pause">
+        <img src="./img/navicon/pause_circle_FILL1_wght400_GRAD0_opsz48.svg"/>
+        <p>Pause</p>
+      </div>
+      <div class="reset">
+        <img src="./img/navicon/stop_circle_FILL1_wght400_GRAD0_opsz48.svg"/>
+        <p>Stop</p>
       </div>
     </div>
-
+    <form action="." class="studyForm">
+      <label for="studyTime">Study Duration:</label>
+      <input type="number" value="1" id="studyTime" placeholder="Study Duration (mins):"/>
+      <label for="breakTime">Break Duration:</label>
+      <input type="number" value="1" id="breakTime" placeholder="Break Duration (mins):"/>
+      <button type="submit">Save</button>
+    </form>
+    <div class="back-to-main">
+      <a href="main.html"><img src="./img/navicon/home_FILL1_wght400_GRAD0_opsz48.svg"></a>
+      <p>Back to Main Menu</p>
+    </div>
     <script src="./scripts/timer.js"></script>
+    <script src="./scripts/save-duration.js"></script>
+    <script src="./scripts/circle-progress.js"></script>
   </body>
 </html>

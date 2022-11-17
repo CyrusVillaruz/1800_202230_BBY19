@@ -1,143 +1,81 @@
-const semicircles = document.querySelectorAll('.semicircle');
-const timer = document.querySelector('.timer');
-const inputField = document.querySelector('.container');
+// Initialize constants
+const el = document.querySelector(".clock");
 
+const mindiv = document.querySelector(".mins");
+const secdiv = document.querySelector(".secs");
 
-// Input
-// const hr = 0;
-// const min = 0;
-// const sec = 10;
+const startBtn = document.querySelector(".start");
+localStorage.setItem("btn", "study");
 
-// const hours = hr * 3600000;
-// const minutes = min * 60000;
-// const seconds = sec * 1000;
-// const setTime = hours + minutes + seconds;
-// const startTime = Date.now();
-// const futureTime = startTime + setTime;
+let initial, totalsecs, percent, paused, mins, seconds;
+let headerText = document.querySelector("h1");
 
+var startBtnVisibility = document.querySelector(".start");
+startBtnVisibility.style.display = "none";
 
-// const timerLoop = setInterval(countDownTimer);
-// countDownTimer();
+var pauseBtnVisibility = document.querySelector(".pause");
+var stopBtnVisibility = document.querySelector(".reset");
+var formVisibility = document.querySelector(".studyForm");
+var backToMainVisibility = document.querySelector(".back-to-main");
 
-// function countDownTimer() {
-//     const currentTime = Date.now();
-//     const remainingTime = futureTime - currentTime;
-//     const angle = (remainingTime / setTime) * 360;
+/**
+ * When the user clicks on the start button, the script will internally
+ * set the timer's duration to the user's inputs.
+ */
+startBtn.addEventListener("click", () => {
+  headerText.innerHTML = "Session In Progress!";
+  pauseBtnVisibility.style.display = "block";
+  stopBtnVisibility.style.display = "block";
+  backToMainVisibility.style.display = "none";
 
-//     // progress indicator
-//     if (angle > 180) {
-//         semicircles[2].style.display ='none';
-//         semicircles[0].style.transform = 'rotate(180deg)';
-//         semicircles[1].style.transform = `rotate(${angle}deg)`;
-//     } else {
-//         semicircles[2].style.display ='block';
-//         semicircles[0].style.transform = `rotate(${angle}deg)`;
-//         semicircles[1].style.transform = `rotate(${angle}deg)`;
-//     }
+  let btn = localStorage.getItem("btn");
 
-//     // timer
-//     const hrs = Math.floor((remainingTime / (1000 * 60 * 60)) % 24).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
-//     const mins = Math.floor((remainingTime / (1000 * 60)) % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
-//     const secs = Math.floor((remainingTime / 1000) % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
+  if (btn === "study") {
+    mins =+ localStorage.getItem("studyTime") || 1; // Gets the time stored from localStorage (studyTime) and adds it to mins, or adds 1 to mins (mins set to 0 by default)
+  } else {
+    mins =+ localStorage.getItem("breakTime") || 1;
+  }
 
-//     timer.innerHTML = `
-//     <div>${hrs}</div>
-//     <div class="colon">:</div>
-//     <div>${mins}</div>
-//     <div class="colon">:</div>
-//     <div>${secs}</div>`;
+  seconds = mins * 60;
+  totalsecs = mins * 60;
+  setTimeout(startTimer(), 60); // 
+  startBtn.style.transform = "scale(0)";
+  paused = false;
+});
 
-//     // 5-second condition
-//     if(remainingTime <= 6000) {
-//         semicircles[0].style.backgroundColor = "red";
-//         semicircles[1].style.backgroundColor = "red";
-//         timer.style.color = "red";
-//     }
-
-
-//     // end
-//     if (remainingTime < 0) {
-//             clearInterval(timerLoop);
-//             semicircles[0].style.display ='none';
-//             semicircles[1].style.display ='none';
-//             semicircles[2].style.display ='none';
-
-//             timer.innerHTML = `
-//             <div>00</div>
-//             <div class="colon">:</div>
-//             <div>00</div>
-//             <div class="colon">:</div>
-//             <div>00</div>
-//             `;
-//             timer.style.color = "lightgray";
-//         }
-// }
 function startTimer() {
-    var duration = document.getElementById("duration").value;
-    var startButton = document.getElementById("startbtn");
-    var pauseButton = document.getElementById("pausebtn");
+  mindiv.textContent = Math.floor(seconds / 60);
+  secdiv.textContent = seconds % 60 > 9 ? seconds % 60 : `0${seconds % 60}`;
+  if (circle.classList.contains("danger")) {
+    circle.classList.remove("danger");
+  }
 
-    startButton.style.display = "none";
-    pauseButton.style.display = "block";
-    inputField.style.display = "none";
+  if (seconds > 0) {
+    percent = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
+    setProgress(percent); // Sets the circle progress to 100
+    seconds--;
+    initial = window.setTimeout("startTimer()", 1000);
 
-    countdown(duration);
-    updateTotalTime();
+    // Changes the circle to red, and adds a pulsing animation to emphasize the session ending soon.
+    if (seconds < 10) {
+      circle.classList.add("danger");
+    }
+  } else {
+    mins = 0;
+    seconds = 0;
+    formVisibility.style.display = "initial";
+    let btn = localStorage.getItem("btn");
+
+    // Starts break only after a study session has finished
+    if (btn === "study") {
+      startBtn.textContent = "Start Break";
+      startBtn.classList.add("break");
+      localStorage.setItem("btn", "break");
+    } else {
+      startBtn.classList.remove("break");
+      startBtn.textContent = "Start Another Session";
+      localStorage.setItem("btn", "study");
+    }
+    startBtn.style.transform = "scale(1)";
+  }
 }
-
-function updateTotalTime() {
-    var totalTimeRef = db.collection("users").doc(user.uid);
-
-    totalTimeRef.update({
-        totalTime: firebase.firestore.FieldValue.increment(1)
-    })
-}
-function countdown(duration) {
-    // Set the date we're counting down to
-    // var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-
-    var newDate = new Date(); //startime
-    newDate.setTime(newDate.getTime() + duration*60*1000);
-    var countDownDate = newDate.getTime();
-
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-        
-        // Time calculations for hours, minutes and seconds
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
-
-        // Display the result
-        timer.innerHTML = `
-        <div>${hours}</div>
-        <div class="colon">:</div>
-        <div>${minutes}</div>
-        <div class="colon">:</div>
-        <div>${seconds}</div>`;
-
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            semicircles[0].style.display ='none';
-            semicircles[1].style.display ='none';
-            semicircles[2].style.display ='none';
-
-            timer.innerHTML = `
-            <div>00</div>
-            <div class="colon">:</div>
-            <div>00</div>
-            <div class="colon">:</div>
-            <div>00</div>
-            `;
-            timer.style.color = "lightgray";
-        }
-    }, 1000);
-}
-
