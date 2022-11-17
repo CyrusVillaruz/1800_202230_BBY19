@@ -113,9 +113,15 @@ function startTimer() {
 }
 
 function calculatePetExp() {
-  var x = localStorage.getItem("studyTime");
-  const exp = 6 * Math.sqrt(5 * (x-10));
+  let x = localStorage.getItem("studyTime");
+  var exp;
+  if (x <= 10) {
+    exp = 0;
+  } else {
+    var exp = 6 * Math.sqrt(5 * (x - 10));
+  }
   return exp;
 }
+
 
 
