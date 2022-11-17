@@ -1,4 +1,4 @@
-function insertName() {
+function populateInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if a user is signed in:
         if (user) {
@@ -6,78 +6,32 @@ function insertName() {
             console.log(user.uid); //print the uid in the browser console
             console.log(user.displayName);  //print the user name in the browser console
             user_Name = user.displayName;
+            //averageDuration = docRef.get(totalTime) / docRef.get(totalSessions);
+            currentUser = db.collection("users").doc(user.uid);
 
+            currentUser.get()
+                .then(userDoc => {
+                    let level = userDoc.data().level;
+                    let totalSessions = userDoc.data().totalSessions;
+                    let totalTime = userDoc.data().totalTime;
+                    let averageDuration = totalTime / totalSessions;
+                    //let totalSessions = userDoc.data().totalSessions;
+
+                })
             //method #1:  insert with html only
             document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
+            document.getElementById("level-goes-here").innerText = level;
+            document.getElementById("totalSessions-goes-here").innerText = totalSessions;
+            document.getElementById("totalTime-goes-here").innerText = totalTime;
+            document.getElementById("averageDuration-goes-here").innerText = averageDuration;
+            document.getElementById("averageBreak-goes-here").innerText = user_Name;
+
             //method #2:  insert using jquery
             //$("#name-goes-here").text(user_Name); //using jquery
 
         } else {
-            // No user is signed in.
+            console.log("no user is logged in")// No user is signed in.
         }
     });
 }
-insertName(); //run the function
-
-function insertName() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if a user is signed in:
-        if (user) {
-            // Do something for the currently logged-in user here: 
-            console.log(user.uid); //print the uid in the browser console
-            console.log(user.displayName);  //print the user name in the browser console
-            user_Name = user.displayName;
-
-            //method #1:  insert with html only
-            document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-            //method #2:  insert using jquery
-            //$("#name-goes-here").text(user_Name); //using jquery
-
-        } else {
-            // No user is signed in.
-        }
-    });
-}
-insertName(); //run the function
-
-function insertName() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if a user is signed in:
-        if (user) {
-            // Do something for the currently logged-in user here: 
-            console.log(user.uid); //print the uid in the browser console
-            console.log(user.displayName);  //print the user name in the browser console
-            user_Name = user.displayName;
-
-            //method #1:  insert with html only
-            document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-            //method #2:  insert using jquery
-            //$("#name-goes-here").text(user_Name); //using jquery
-
-        } else {
-            // No user is signed in.
-        }
-    });
-}
-insertName(); //run the function
-
-function insertSessions() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if a user is signed in:
-        if (user) {
-            // Do something for the currently logged-in user here: 
-            console.log(user.uid); //print the uid in the browser console
-            console.log(user.displayName);  //print the user name in the browser console
-            user_Name = user.displayName;
-
-            //method #1:  insert with html only
-            document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-            //method #2:  insert using jquery
-            //$("#name-goes-here").text(user_Name); //using jquery
-
-        } else {
-            // No user is signed in.
-        }
-    });
-}
-insertName(); //run the function
+populateInfo(); //run the function
