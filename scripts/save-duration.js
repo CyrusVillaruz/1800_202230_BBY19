@@ -23,6 +23,13 @@ document.querySelector(".reset").addEventListener("click", () => {
   setProgress(0);
   mindiv.textContent = "00";
   secdiv.textContent = "00";
+
+  headerText.innerHTML = "Start a Session";
+  formVisibility.style.display = "flex";
+  backToMainVisibility.style.display = "flex";
+  startBtnVisibility.style.display = "none";
+  pauseBtnVisibility.style.display = "none";
+  stopBtnVisibility.style.display = "none";
 });
 
 /**
@@ -39,6 +46,7 @@ pauseBtn.addEventListener("click", () => {
     pauseBtn.textContent = "pause";
     pauseBtn.classList.remove("resume");
   } else {
+    headerText.innerHTML = "Session Paused";
     clearTimeout(initial);
     pauseBtn.textContent = "resume";
     pauseBtn.classList.add("resume");
