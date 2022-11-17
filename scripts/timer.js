@@ -18,12 +18,14 @@ var stopBtnVisibility = document.querySelector(".reset");
 var formVisibility = document.querySelector(".studyForm");
 var backToMainVisibility = document.querySelector(".back-to-main");
 
+var numOfSessions = 0;
+
 /**
  * When the user clicks on the start button, the script will internally
  * set the timer's duration to the user's inputs.
  */
 startBtn.addEventListener("click", () => {
-  headerText.innerHTML = "Session In Progress!";
+  headerText.innerHTML = "Session In Progress";
   pauseBtnVisibility.style.display = "block";
   stopBtnVisibility.style.display = "block";
   backToMainVisibility.style.display = "none";
@@ -53,29 +55,45 @@ function startTimer() {
   if (seconds > 0) {
     percent = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
     setProgress(percent); // Sets the circle progress to 100
-    seconds--;
+    seconds -= 10;
     initial = window.setTimeout("startTimer()", 1000);
 
     // Changes the circle to red, and adds a pulsing animation to emphasize the session ending soon.
     if (seconds < 10) {
       circle.classList.add("danger");
+      headerText.innerHTML = "Session Ending Soon";
     }
   } else {
     mins = 0;
     seconds = 0;
-    formVisibility.style.display = "initial";
+
+    backToMainVisibility.style.display = "flex";
     let btn = localStorage.getItem("btn");
+
+    pauseBtnVisibility.style.display = "none";
+    stopBtnVisibility.style.display = "none";
 
     // Starts break only after a study session has finished
     if (btn === "study") {
-      startBtn.textContent = "Start Break";
+      headerText.innerHTML = "Begin Break";
       startBtn.classList.add("break");
       localStorage.setItem("btn", "break");
     } else {
       startBtn.classList.remove("break");
-      startBtn.textContent = "Start Another Session";
+      headerText.innerHTML = "Session Ended";
       localStorage.setItem("btn", "study");
+      formVisibility.style.display = "flex";
+
+      // Experimental code
+      const increment = firebase.firestore.FieldValue.increment(1);
+      const totalTimeRef = db.collection("users").doc(user.uid);
+      const batch = db.batch();
+      batch.set(totalTimeRef, { totalTime: increment }, { merge: true });
+      batch.commit();
+      
     }
     startBtn.style.transform = "scale(1)";
+    numOfSessions++;
+    console.log("Number of Sessions: " + numOfSessions);
   }
 }
