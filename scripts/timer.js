@@ -33,14 +33,14 @@ startBtn.addEventListener("click", () => {
   let btn = localStorage.getItem("btn");
 
   if (btn === "study") {
-    mins =+ localStorage.getItem("studyTime") || 1; // Gets the time stored from localStorage (studyTime) and adds it to mins, or adds 1 to mins (mins set to 0 by default)
+    mins = +localStorage.getItem("studyTime") || 1; // Gets the time stored from localStorage (studyTime) and adds it to mins, or adds 1 to mins (mins set to 0 by default)
   } else {
-    mins =+ localStorage.getItem("breakTime") || 1;
+    mins = +localStorage.getItem("breakTime") || 1;
   }
 
   seconds = mins * 60;
   totalsecs = mins * 60;
-  setTimeout(startTimer(), 60); // 
+  setTimeout(startTimer(), 60); //
   startBtn.style.transform = "scale(0)";
   paused = false;
 });
@@ -85,15 +85,23 @@ function startTimer() {
       formVisibility.style.display = "flex";
 
       // Experimental code
-      const increment = firebase.firestore.FieldValue.increment(1);
-      const totalTimeRef = db.collection("users").doc(user.uid);
-      const batch = db.batch();
-      batch.set(totalTimeRef, { totalTime: increment }, { merge: true });
-      batch.commit();
-      
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const increment = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
+          const totalTimeRef = db.collection("users").doc(user.uid);
+          const batch = db.batch();
+          batch.set(totalTimeRef, { totalTime: increment }, { merge: true });
+          batch.commit();
+        } else {
+          // No user is signed in.
+          console.log("No user is signed in");
+          window.location.href = "login.html";
+        }
+      });
     }
     startBtn.style.transform = "scale(1)";
-    numOfSessions++;
+    // numOfSessions++;
     console.log("Number of Sessions: " + numOfSessions);
   }
 }
+
