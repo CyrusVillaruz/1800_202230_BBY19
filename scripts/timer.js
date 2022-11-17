@@ -33,9 +33,9 @@ startBtn.addEventListener("click", () => {
   let btn = localStorage.getItem("btn");
 
   if (btn === "study") {
-    mins = +localStorage.getItem("studyTime") || 1; // Gets the time stored from localStorage (studyTime) and adds it to mins, or adds 1 to mins (mins set to 0 by default)
+    mins =+ localStorage.getItem("studyTime") || 1; // Gets the time stored from localStorage (studyTime) and adds it to mins, or adds 1 to mins (mins set to 0 by default)
   } else {
-    mins = +localStorage.getItem("breakTime") || 1;
+    mins =+ localStorage.getItem("breakTime") || 1;
   }
 
   seconds = mins * 60;
@@ -87,10 +87,17 @@ function startTimer() {
       // Experimental code
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          const increment = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
-          const totalTimeRef = db.collection("users").doc(user.uid);
+          const incrementTotalTime = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
+          const incrementNumberOfSessions = firebase.firestore.FieldValue.increment(1);
+          const incrementPetExp = firebase.firestore.FieldValue.increment(calculatePetExp());
+          
+          const userRef = db.collection("users").doc(user.uid);
           const batch = db.batch();
-          batch.set(totalTimeRef, { totalTime: increment }, { merge: true });
+
+          batch.set(userRef, { totalTime : incrementTotalTime }, { merge: true });
+          batch.set(userRef, { totalSessions : incrementNumberOfSessions }, { merge: true });
+          batch.set(userRef, { totalExp : incrementPetExp }, { merge: true });
+
           batch.commit();
         } else {
           // No user is signed in.
@@ -101,7 +108,14 @@ function startTimer() {
     }
     startBtn.style.transform = "scale(1)";
     // numOfSessions++;
-    console.log("Number of Sessions: " + numOfSessions);
+    // console.log("Number of Sessions: " + numOfSessions);
   }
 }
+
+function calculatePetExp() {
+  var x = localStorage.getItem("studyTime");
+  const exp = 6 * Math.sqrt(5 * (x-10));
+  return exp;
+}
+
 
