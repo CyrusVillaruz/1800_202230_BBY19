@@ -33,9 +33,9 @@ startBtn.addEventListener("click", () => {
   let btn = localStorage.getItem("btn");
 
   if (btn === "study") {
-    mins =+ localStorage.getItem("studyTime") || 1; // Gets the time stored from localStorage (studyTime) and adds it to mins, or adds 1 to mins (mins set to 0 by default)
+    mins =+ localStorage.getItem("studyTime") || 0; // Gets the time stored from localStorage (studyTime) and adds it to mins, or adds 1 to mins (mins set to 0 by default)
   } else {
-    mins =+ localStorage.getItem("breakTime") || 1;
+    mins =+ localStorage.getItem("breakTime") || 0;
   }
 
   seconds = mins * 60;
