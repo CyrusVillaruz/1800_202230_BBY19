@@ -22,7 +22,7 @@ function populateInfo() {
                     document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
                     document.getElementById("level-goes-here").innerText = level;
                     document.getElementById("totalSessions-goes-here").innerText = totalSessions;
-                    document.getElementById("totalTime-goes-here").innerText = totalTime;
+                    document.getElementById("totalTime-goes-here").innerText = totalTime + " minutes";
                     document.getElementById("averageDuration-goes-here").innerText = averageDuration;
                     document.getElementById("totalExp-goes-here").innerText = totalExp;
                 })
