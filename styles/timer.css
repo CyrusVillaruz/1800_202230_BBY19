@@ -62,26 +62,41 @@ form button {
   color: white;
 }
 .start {
+  padding: 0.5em;
   color: black;
   text-align: center;
+}
+.start img {
+  height: 2.5em;
 }
 .break {
   color: #000000;
   text-align: center;
 }
 .reset {
+  padding: 0.5em;
   display: none;
   color: #000000;
   text-align: center;
 }
+.reset img {
+  height: 2.5em;
+}
 .pause {
+  padding: 0.5em;
   display: none;
   color: #000000;
   text-align: center;
+}
+.pause img {
+  height: 2.5em;
 }
 .resume {
   color: #000000;
   text-align: center;
+}
+.resume img {
+  height: 2.5em;
 }
 .clock {
   padding: 3px;

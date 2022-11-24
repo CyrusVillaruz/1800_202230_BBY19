@@ -11,23 +11,25 @@ function populateInfo() {
 
             currentUser.get()
                 .then(userDoc => {
-                    let level = userDoc.data().level;
+                    // let level = userDoc.data().level;
+                    let level = Math.floor(totalExp/100);
                     let totalSessions = userDoc.data().totalSessions;
                     let totalTime = userDoc.data().totalTime;
                     let averageDuration = totalTime / totalSessions;
+                    let totalExp = userDoc.data().totalExp;
                     //let totalSessions = userDoc.data().totalSessions;
-
-                })
             //method #1:  insert with html only
-            document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-            document.getElementById("level-goes-here").innerText = level;
-            document.getElementById("totalSessions-goes-here").innerText = totalSessions;
-            document.getElementById("totalTime-goes-here").innerText = totalTime;
-            document.getElementById("averageDuration-goes-here").innerText = averageDuration;
-            document.getElementById("averageBreak-goes-here").innerText = user_Name;
+                    document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
+                    document.getElementById("level-goes-here").innerText = level;
+                    document.getElementById("totalSessions-goes-here").innerText = totalSessions;
+                    document.getElementById("totalTime-goes-here").innerText = totalTime;
+                    document.getElementById("averageDuration-goes-here").innerText = averageDuration;
+                    document.getElementById("totalExp-goes-here").innerText = totalExp;
+                })
+            // //method #1:  insert with html only
 
             //method #2:  insert using jquery
-            //$("#name-goes-here").text(user_Name); //using jquery
+            // $("#name-goes-here").text(user_Name); //using jquery
 
         } else {
             console.log("no user is logged in")// No user is signed in.

@@ -55,7 +55,7 @@ function startTimer() {
   if (seconds > 0) {
     percent = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
     setProgress(percent);
-    seconds -= 10; // Saving time from testing.
+    seconds -= 1; // Saving time from testing.
     initial = window.setTimeout("startTimer()", 1000);
 
     // Changes the circle to red, and adds a pulsing animation to emphasize the session ending soon.
@@ -125,10 +125,9 @@ function calculatePetExp() {
   return exp;
 }
 
-// function calculateAverageDuration(op1, op2) {
-//   var average = (op1 + op2) / 2;
-//   return average;
-// }
+function calculateAverageDuration() {
+  
+}
 
 
 

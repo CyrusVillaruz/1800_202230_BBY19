@@ -43,12 +43,16 @@ pauseBtn.addEventListener("click", () => {
   if (paused) { // Resumes the timer (paused acts as a flag)
     paused = false;
     initial = setTimeout("startTimer()", 60);
+
     pauseBtn.textContent = "pause";
+    var pauseImg = "<img src=\"./img/navicon/pause-circle.svg\"/></i><p>Pause</p>"
+    document.querySelector(".pause").innerHTML = pauseImg;
     pauseBtn.classList.remove("resume");
   } else {
     headerText.innerHTML = "Session Paused";
     clearTimeout(initial);
-    pauseBtn.textContent = "resume";
+    var resumeImg = "<img src=\"./img/navicon/play-circle.svg\"/></i><p>Resume</p>"
+    document.querySelector(".pause").innerHTML = resumeImg;
     pauseBtn.classList.add("resume");
     paused = true;
   }
