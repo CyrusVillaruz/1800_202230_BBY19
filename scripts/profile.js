@@ -23,7 +23,7 @@ function populateInfo() {
                     document.getElementById("level-goes-here").innerText = level;
                     document.getElementById("totalSessions-goes-here").innerText = totalSessions;
                     document.getElementById("totalTime-goes-here").innerText = totalTime + " minutes";
-                    document.getElementById("averageDuration-goes-here").innerText = averageDuration;
+                    document.getElementById("averageDuration-goes-here").innerText = averageDuration + " minutes";
                     document.getElementById("totalExp-goes-here").innerText = totalExp;
                 })
             // //method #1:  insert with html only
