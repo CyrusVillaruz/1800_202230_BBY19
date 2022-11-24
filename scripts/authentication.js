@@ -22,7 +22,6 @@ var uiConfig = {
           email: user.email,                         //with authenticated user's ID (user.uid)
           totalTime: 0,
           totalSessions: 0,
-          averageDuration: 0,
           totalExp: 0,
           level: 1,
           height: 0.105,

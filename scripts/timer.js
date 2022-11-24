@@ -90,7 +90,6 @@ function startTimer() {
           const incrementTotalTime = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
           const incrementNumberOfSessions = firebase.firestore.FieldValue.increment(1);
           const incrementPetExp = firebase.firestore.FieldValue.increment(calculatePetExp());
-          // const incrementAverageDuration = firebase.firestore.FieldValue.increment(calculateAverageDuration(totalTime, totalSessions));
           
           const userRef = db.collection("users").doc(user.uid);
           const batch = db.batch();
@@ -98,7 +97,6 @@ function startTimer() {
           batch.set(userRef, { totalTime : incrementTotalTime }, { merge: true });
           batch.set(userRef, { totalSessions : incrementNumberOfSessions }, { merge: true });
           batch.set(userRef, { totalExp : incrementPetExp }, { merge: true });
-          // batch.set(userRef, { averageDuration : incrementAverageDuration }, { merge: true });
 
           batch.commit();
         } else {
@@ -123,10 +121,6 @@ function calculatePetExp() {
     var exp = 6 * Math.sqrt(5 * (x - 10));
   }
   return exp;
-}
-
-function calculateAverageDuration() {
-  
 }
 
 
