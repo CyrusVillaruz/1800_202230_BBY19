@@ -55,7 +55,7 @@ function startTimer() {
   if (seconds > 0) {
     percent = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
     setProgress(percent);
-    seconds -= 1; // Saving time from testing.
+    seconds -= 30; // Saving time from testing.
     initial = window.setTimeout("startTimer()", 1000);
 
     // Changes the circle to red, and adds a pulsing animation to emphasize the session ending soon.
@@ -72,7 +72,26 @@ function startTimer() {
 
     pauseBtnVisibility.style.display = "none";
     stopBtnVisibility.style.display = "none";
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const incrementTotalTime = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
+        const incrementNumberOfSessions = firebase.firestore.FieldValue.increment(1);
+        const incrementPetExp = firebase.firestore.FieldValue.increment(calculatePetExp());
+        
+        const userRef = db.collection("users").doc(user.uid);
+        const batch = db.batch();
 
+        batch.set(userRef, { totalTime : incrementTotalTime }, { merge: true });
+        batch.set(userRef, { totalSessions : incrementNumberOfSessions }, { merge: true });
+        batch.set(userRef, { totalExp : incrementPetExp }, { merge: true });
+
+        batch.commit();
+      } else {
+        // No user is signed in.
+        console.log("No user is signed in");
+        window.location.href = "login.html";
+      }
+    });
     // Starts break only after a study session has finished
     if (btn === "study") {
       headerText.innerHTML = "Begin Break";
@@ -85,26 +104,7 @@ function startTimer() {
       formVisibility.style.display = "flex";
 
       // Experimental code
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          const incrementTotalTime = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
-          const incrementNumberOfSessions = firebase.firestore.FieldValue.increment(1);
-          const incrementPetExp = firebase.firestore.FieldValue.increment(calculatePetExp());
-          
-          const userRef = db.collection("users").doc(user.uid);
-          const batch = db.batch();
 
-          batch.set(userRef, { totalTime : incrementTotalTime }, { merge: true });
-          batch.set(userRef, { totalSessions : incrementNumberOfSessions }, { merge: true });
-          batch.set(userRef, { totalExp : incrementPetExp }, { merge: true });
-
-          batch.commit();
-        } else {
-          // No user is signed in.
-          console.log("No user is signed in");
-          window.location.href = "login.html";
-        }
-      });
     }
     startBtn.style.transform = "scale(1)";
     // numOfSessions++;
