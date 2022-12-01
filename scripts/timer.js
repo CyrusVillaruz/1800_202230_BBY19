@@ -69,28 +69,29 @@ function startTimer() {
     mins = 0;
     seconds = 0;
 
-    let btn = localStorage.getItem("btn");
+    // let btn = localStorage.getItem("btn");
 
     pauseBtnVisibility.style.display = "none";
     stopBtnVisibility.style.display = "none";
-    // Starts break only after a study session has finished
-    if (btn === "study") {
-      headerText.innerHTML = "Begin Break";
-      startBtn.classList.add("break");
-      localStorage.setItem("btn", "break");
+    // // Starts break only after a study session has finished
+    // if (btn === "study") {
+    //   headerText.innerHTML = "Begin Break";
+    //   startBtn.classList.add("break");
+    //   localStorage.setItem("btn", "break");
       
-    } else {
-      startBtn.classList.remove("break");
+    // } else {
+    //   startBtn.classList.remove("break");
       backToMainVisibility.style.display = "flex";
       headerText.innerHTML = "Session Ended";
+      startBtnVisibility.style.display = "none"; // Temporary
       localStorage.setItem("btn", "study");
       formVisibility.style.display = "flex";
 
-      // Experimental code
+    //   // Experimental code
 
-    }   
+    // }   
 
-    if (headerText.innerHTML === "Begin Break") {
+    if (headerText.innerHTML === "Session Ended") {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           const incrementTotalTime = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
