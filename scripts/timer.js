@@ -55,8 +55,10 @@ function startTimer() {
   if (seconds > 0) {
     percent = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
     setProgress(percent);
-    seconds -= 30; // Saving time from testing.
-    initial = window.setTimeout("startTimer()", 1000);
+    // For the sake of saving time in presentation, increasing decrementing value
+    // seconds--;
+    seconds -= 300;
+    initial = window.setTimeout("startTimer()", 1000); // Change second parameter to 1000 to decrease by one second
 
     // Changes the circle to red, and adds a pulsing animation to emphasize the session ending soon.
     if (seconds < 10) {
@@ -67,44 +69,48 @@ function startTimer() {
     mins = 0;
     seconds = 0;
 
-    backToMainVisibility.style.display = "flex";
     let btn = localStorage.getItem("btn");
 
     pauseBtnVisibility.style.display = "none";
     stopBtnVisibility.style.display = "none";
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        const incrementTotalTime = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
-        const incrementNumberOfSessions = firebase.firestore.FieldValue.increment(1);
-        const incrementPetExp = firebase.firestore.FieldValue.increment(calculatePetExp());
-        
-        const userRef = db.collection("users").doc(user.uid);
-        const batch = db.batch();
-
-        batch.set(userRef, { totalTime : incrementTotalTime }, { merge: true });
-        batch.set(userRef, { totalSessions : incrementNumberOfSessions }, { merge: true });
-        batch.set(userRef, { totalExp : incrementPetExp }, { merge: true });
-
-        batch.commit();
-      } else {
-        // No user is signed in.
-        console.log("No user is signed in");
-        window.location.href = "login.html";
-      }
-    });
     // Starts break only after a study session has finished
     if (btn === "study") {
       headerText.innerHTML = "Begin Break";
       startBtn.classList.add("break");
       localStorage.setItem("btn", "break");
+      
     } else {
       startBtn.classList.remove("break");
+      backToMainVisibility.style.display = "flex";
       headerText.innerHTML = "Session Ended";
       localStorage.setItem("btn", "study");
       formVisibility.style.display = "flex";
 
       // Experimental code
 
+    }   
+
+    if (headerText.innerHTML === "Begin Break") {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const incrementTotalTime = firebase.firestore.FieldValue.increment(localStorage.getItem("studyTime"));
+          const incrementNumberOfSessions = firebase.firestore.FieldValue.increment(1);
+          const incrementPetExp = firebase.firestore.FieldValue.increment(calculatePetExp());
+          
+          const userRef = db.collection("users").doc(user.uid);
+          const batch = db.batch();
+  
+          batch.set(userRef, { totalTime : incrementTotalTime }, { merge: true });
+          batch.set(userRef, { totalSessions : incrementNumberOfSessions }, { merge: true });
+          batch.set(userRef, { totalExp : incrementPetExp }, { merge: true });
+  
+          batch.commit();
+        } else {
+          // No user is signed in.
+          console.log("No user is signed in");
+          window.location.href = "login.html";
+        }
+      });
     }
     startBtn.style.transform = "scale(1)";
     // numOfSessions++;
@@ -118,7 +124,7 @@ function calculatePetExp() {
   if (x <= 10) {
     exp = 0;
   } else {
-    var exp = 6 * Math.sqrt(5 * (x - 10));
+    var exp = Math.floor(6 * Math.sqrt(5 * (x - 10)));
   }
   return exp;
 }

@@ -14,11 +14,11 @@ function populateInfo() {
                     // let level = userDoc.data().level;
                     let totalSessions = userDoc.data().totalSessions;
                     let totalTime = userDoc.data().totalTime;
-                    let averageDuration = totalTime / totalSessions;
+                    let averageDuration = Math.floor(totalTime / totalSessions);
                     if (totalSessions == 0) {
                         averageDuration = 0;
                     }
-                    let totalExp = userDoc.data().totalExp;
+                    let totalExp = userDoc.data().totalExp.toFixed(0);
                     let level = Math.floor(totalExp/100) + 1;
                     //let totalSessions = userDoc.data().totalSessions;
             //method #1:  insert with html only

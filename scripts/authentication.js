@@ -23,6 +23,7 @@ var uiConfig = {
           totalTime: 0,
           totalSessions: 0,
           totalExp: 0,
+          petName: "tempName",
           //country: "Canada",                      //optional default profile info      
           //school: "BCIT"                          //optional default profile info
           
