@@ -1,17 +1,17 @@
 // Initialize constants
 const studyTimeInput = document.querySelector("#studyTime");
-const breakTimeInput = document.querySelector("#breakTime");
+// const breakTimeInput = document.querySelector("#breakTime");
 const pauseBtn = document.querySelector(".pause");
 
 // Stores the user's input into the local storage.
 studyTimeInput.value = localStorage.getItem("studyTime");
-breakTimeInput.value = localStorage.getItem("breakTime");
+// breakTimeInput.value = localStorage.getItem("breakTime");
 
 // Internally sets the user's input into the studyTime and breakTime IDs
 document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
   localStorage.setItem("studyTime", studyTimeInput.value);
-  localStorage.setItem("breakTime", breakTimeInput.value);
+  // localStorage.setItem("breakTime", breakTimeInput.value);
   formVisibility.style.display = "none";
   startBtnVisibility.style.display = "block";
 });

@@ -1,1 +1,18 @@
 
+/*
+* --------------------------------------------
+* These are some styles that I am customizing 
+* to over-ride the default bootstrap ones
+*---------------------------------------------
+*/
+.bg-light {
+  background-color: #d6cec2 !important;
+}
+
+body {
+  background-color: #fffdf9;
+}
+
+.material-symbols-rounded {
+  color: black;
+}

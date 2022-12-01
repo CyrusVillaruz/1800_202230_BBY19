@@ -56,7 +56,7 @@ form {
   margin: 5px auto;
 }
 form button {
-  background: rgb(25, 67, 255);
+  background: #8292cc;
   width: 100%;
   margin: 5px 0;
   color: white;
@@ -119,7 +119,7 @@ form button {
   transition: 0.5s;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
-  stroke: rgb(51, 65, 255);
+  stroke: #8292cc;
 }
 
 .danger {
