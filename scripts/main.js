@@ -37,7 +37,7 @@ function populateInfo() {
                     let totalExp = userDoc.data().totalExp;
                     let level = Math.floor(totalExp / 100) + 1;
                     let currentExp = Math.floor(userDoc.data().totalExp - ((level - 1) * 100));
-                    let height = 10 * Math.pow(1.05, level);
+                    let height = (10 * Math.pow(1.05, level)).toFixed(2);
                     //let totalSessions = userDoc.data().totalSessions;
                     //method #1:  insert with html only
                     document.getElementById("petName-goes-here").innerText = petName;    //using javascript
