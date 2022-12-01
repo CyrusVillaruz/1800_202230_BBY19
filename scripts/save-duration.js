@@ -48,6 +48,7 @@ pauseBtn.addEventListener("click", () => {
     var pauseImg = "<img src=\"./img/navicon/pause-circle.svg\"/></i><p>Pause</p>"
     document.querySelector(".pause").innerHTML = pauseImg;
     pauseBtn.classList.remove("resume");
+    headerText.innerHTML = "Session In Progress";
   } else {
     headerText.innerHTML = "Session Paused";
     clearTimeout(initial);
