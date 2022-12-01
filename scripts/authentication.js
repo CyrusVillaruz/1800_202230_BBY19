@@ -23,8 +23,6 @@ var uiConfig = {
           totalTime: 0,
           totalSessions: 0,
           totalExp: 0,
-          level: 1,
-          height: 0.105,
           //country: "Canada",                      //optional default profile info      
           //school: "BCIT"                          //optional default profile info
           

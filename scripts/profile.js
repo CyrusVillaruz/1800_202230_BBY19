@@ -16,7 +16,7 @@ function populateInfo() {
                     let totalTime = userDoc.data().totalTime;
                     let averageDuration = totalTime / totalSessions;
                     let totalExp = userDoc.data().totalExp;
-                    let level = Math.floor(totalExp/100);
+                    let level = Math.floor(totalExp/100) + 1;
                     //let totalSessions = userDoc.data().totalSessions;
             //method #1:  insert with html only
                     document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
