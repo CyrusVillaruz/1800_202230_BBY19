@@ -36,12 +36,14 @@ function populateInfo() {
                     let petName = userDoc.data().petName;
                     let totalExp = userDoc.data().totalExp;
                     let level = Math.floor(totalExp / 100) + 1;
-                    let currentExp = Math.floor(userDoc.data().totalExp - (level * 100));
+                    let currentExp = Math.floor(userDoc.data().totalExp - ((level - 1) * 100));
+                    let height = 10 * Math.pow(1.05, level);
                     //let totalSessions = userDoc.data().totalSessions;
                     //method #1:  insert with html only
                     document.getElementById("petName-goes-here").innerText = petName;    //using javascript
                     document.getElementById("level-goes-here").innerText = level;
                     document.getElementById("currentExp-goes-here").innerText = currentExp;
+                    document.getElementById("height-goes-here").innerText = height;
                 })
             // //method #1:  insert with html only
 
