@@ -19,7 +19,7 @@ function populateInfo() {
                     let height = (10 * Math.pow(1.05, level)).toFixed(2);
                     //let totalSessions = userDoc.data().totalSessions;
                     //method #1:  insert with html only
-                    document.getElementById("petName-goes-here").innerText = petName;    //using javascript
+                    document.getElementById("petName-goes-here").innerHTML = petName;    //using javascript
                     document.getElementById("level-goes-here").innerText = level;
                     document.getElementById("currentExp-goes-here").innerText = currentExp;
                     document.getElementById("height-goes-here").innerText = height;
