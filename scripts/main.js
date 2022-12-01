@@ -35,3 +35,16 @@ function populateInfo() {
     });
 }
 populateInfo(); //run the function
+
+function readQuote() {
+    db.collection("quotes").doc("Thursday")                                                      //name of the collection and documents should matach excatly with what you have in Firestore
+      .onSnapshot(thursdayDoc => {                                                               //arrow notation
+           console.log("current document data: " + thursdayDoc.data());                          //.data() returns data object
+           document.getElementById("tip-goes-here").innerHTML = thursdayDoc.data().quote;      //using javascript to display the data on the right place
+           
+           //Here are other ways to access key:value data fields
+           //$('#quote-goes-here').text(tuesdayDoc.data().quote);                                       //using jquery object dot notation
+           //$("#quote-goes-here").text(tuesdayDoc.data()["quote"]);                                    //using json object indexing
+      })
+}
+readQuote() 
