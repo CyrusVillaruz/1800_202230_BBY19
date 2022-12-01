@@ -15,6 +15,9 @@ function populateInfo() {
                     let totalSessions = userDoc.data().totalSessions;
                     let totalTime = userDoc.data().totalTime;
                     let averageDuration = totalTime / totalSessions;
+                    if (totalSessions == 0) {
+                        averageDuration = 0;
+                    }
                     let totalExp = userDoc.data().totalExp;
                     let level = Math.floor(totalExp/100) + 1;
                     //let totalSessions = userDoc.data().totalSessions;
