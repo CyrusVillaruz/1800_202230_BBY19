@@ -56,8 +56,8 @@ function startTimer() {
     percent = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
     setProgress(percent);
     // For the sake of saving time in presentation, increasing decrementing value
-    // seconds--;
-    seconds -= 300;
+    seconds--;
+    // seconds -= 300;
     initial = window.setTimeout("startTimer()", 1000); // Change second parameter to 1000 to decrease by one second
 
     // Changes the circle to red, and adds a pulsing animation to emphasize the session ending soon.
