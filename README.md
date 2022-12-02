@@ -34,15 +34,14 @@ Content of the project folder:
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo                  
-├───images		     # Folder for images
-│       main-page.png
-│       session-in-progress.png
-│       start-session.png
-│       user-profile.png
-├───img
+├───img		     	     # Folder for images
 │   │   account.png
 │   │   favicon.png
 │   │   poodent.png
+│   │   main-page.png
+│   │   session-in-progress.png
+│   │   start-session.png
+│   │   user-profile.png
 │   │
 │   └───navicon
 │           account_box_FILL0_wght400_GRAD0_opsz48.svg
