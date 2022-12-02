@@ -16,3 +16,35 @@ body {
 .material-symbols-rounded {
   color: black;
 }
+
+.navbar-brand {
+  color: black;
+  font-size: 24pt;
+}
+
+.nav-item .nav-link {
+  color: black;
+}
+
+.btn-primary {
+  background-color: #9baadf;
+  border: #9baadf;
+}
+.btn-primary:hover {
+  background-color: #6c77aa;
+  border: #6c77aa;
+}
+
+.container {
+  text-align: center;
+  padding: 5em;
+}
+
+.card-img-top {
+  height: 45em;
+}
+
+.card {
+  margin: 2em;
+  height: 50%;
+}
