@@ -1,4 +1,4 @@
-## My Web Application (Add your Title here)
+## My Web Application (Focus Farm)
 
 * [General info](#general-info)
 * [Technologies](#technologies)
@@ -25,18 +25,68 @@ Content of the project folder:
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
 └── README.md
+│   index.html
+│   login.html
+│   main.html
+│   profile.html
+│   task.html
+
 
 It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /blah.jpg                # 
-├── scripts                  # Folder for scripts
-    /blah.js                 # 
-├── styles                   # Folder for styles
-    /blah.css                # 
+├── .git                     # Folder for git repo                  
+├───images		     # Folder for images
+│       main-page.png
+│       session-in-progress.png
+│       start-session.png
+│       user-profile.png
+├───img
+│   │   account.png
+│   │   favicon.png
+│   │   poodent.png
+│   │
+│   └───navicon
+│           account_box_FILL0_wght400_GRAD0_opsz48.svg
+│           account_box_FILL1_wght400_GRAD0_opsz48.svg
+│           account_circle_FILL0_wght400_GRAD0_opsz48.svg
+│           account_circle_FILL1_wght400_GRAD0_opsz48.svg
+│           home_FILL0_wght400_GRAD0_opsz48.svg
+│           home_FILL1_wght400_GRAD0_opsz48.svg
+│           menu_FILL0_wght400_GRAD0_opsz48.svg
+│           pause-circle.svg
+│           pause_circle_FILL1_wght400_GRAD0_opsz48.svg
+│           play-circle.svg
+│           play_circle_FILL0_wght400_GRAD0_opsz48.svg
+│           play_circle_FILL1_wght400_GRAD0_opsz48.svg
+│           stop-circle.svg
+│           stop_circle_FILL1_wght400_GRAD0_opsz48.svg
+│
+                 
+├───scripts		     # Folder for scripts
+│       authentication.js
+│       circle-progress.js
+│       firebaseAPI_TEAM19.js
+│       main.js
+│       profile.js
+│       save-duration.js
+│       script.js
+│       skeleton.js
+│       timer.js
+└───styles		      # Folder for styles
+        index.css
+        main.css
+        profile.css
+        style.css
+        timer.css               
 
 Firebase hosting files: 
-├── .firebaserc...
+├── .firebaserc
+│   storage.rules
+│   firebase.json
+│   404.html
+│   firestore.indexes.json
+│   firestore.rules
+├───.firebase
+│       hosting..cache
 
 
 ```
