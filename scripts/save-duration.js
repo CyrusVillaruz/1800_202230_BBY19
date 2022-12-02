@@ -21,6 +21,8 @@ document.querySelector(".reset").addEventListener("click", () => {
   startBtn.style.transform = "scale(1)";
   clearTimeout(initial);
   setProgress(0);
+
+  // Placeholder values
   mindiv.textContent = "00";
   secdiv.textContent = "00";
 
@@ -49,7 +51,7 @@ pauseBtn.addEventListener("click", () => {
     document.querySelector(".pause").innerHTML = pauseImg;
     pauseBtn.classList.remove("resume");
     headerText.innerHTML = "Session In Progress";
-  } else {
+  } else { // Pauses the timer
     headerText.innerHTML = "Session Paused";
     clearTimeout(initial);
     var resumeImg = "<img src=\"./img/navicon/play-circle.svg\"/></i><p>Resume</p>"
