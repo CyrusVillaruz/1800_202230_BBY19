@@ -45,6 +45,9 @@ startBtn.addEventListener("click", () => {
   paused = false;
 });
 
+/**
+ * Starts the timer after storing user input into local storage
+ */
 function startTimer() {
   mindiv.textContent = Math.floor(seconds / 60);
   secdiv.textContent = seconds % 60 > 9 ? seconds % 60 : `0${seconds % 60}`;
@@ -90,7 +93,7 @@ function startTimer() {
     //   // Experimental code
 
     // }   
-
+    // Update firesetore data after session ends
     if (headerText.innerHTML === "Session Ended") {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -119,6 +122,10 @@ function startTimer() {
   }
 }
 
+/**
+ * Function that calculates the pet exp.
+ * @returns pet exp
+ */
 function calculatePetExp() {
   let x = localStorage.getItem("studyTime");
   var exp;
