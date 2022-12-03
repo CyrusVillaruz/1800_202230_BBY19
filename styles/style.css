@@ -6,3 +6,7 @@
 #navicon1 {
   size: 10%;
 }
+
+html, body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
